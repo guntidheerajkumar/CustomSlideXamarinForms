@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -7,13 +7,28 @@ namespace SliderDrawer
 	public partial class SliderContentView : ContentView
 	{
 		public static readonly BindableProperty IsSlideOpenProperty =
-			BindableProperty.Create<SliderContentView, bool>(p => p.IsSlideOpen, false, BindingMode.TwoWay, propertyChanged: SlideOpenClose);
+			BindableProperty.Create("IsSlideOpen",
+						typeof(bool),
+						typeof(SliderContentView),
+						false,
+						BindingMode.TwoWay,
+						propertyChanged: SlideOpenClose);
 
 		public static readonly BindableProperty DefaultHeightProperty =
-			BindableProperty.Create<SliderContentView, double>(p => p.DefaultHeight, 0, BindingMode.TwoWay, propertyChanged: DefaultHeightChanged);
+			BindableProperty.Create("DefaultHeight",
+						typeof(double),
+						typeof(SliderContentView),
+						0.0D,
+						BindingMode.TwoWay, null,
+						propertyChanged: DefaultHeightChanged, propertyChanging: null, coerceValue: null, defaultValueCreator: null);
 
 		public static readonly BindableProperty StackLayoutProperty =
-		BindableProperty.Create<SliderContentView, StackLayout>(p => p.StackLayout, null, BindingMode.TwoWay, propertyChanged: StackLayoutAdded);
+			BindableProperty.Create("StackLayout",
+						typeof(StackLayout),
+						typeof(SliderContentView),
+						null,
+						BindingMode.TwoWay, null,
+						propertyChanged: StackLayoutAdded, propertyChanging: null, coerceValue: null, defaultValueCreator: null);
 
 		public SliderContentView()
 		{
@@ -30,10 +45,15 @@ namespace SliderDrawer
 			set { SetValue(StackLayoutProperty, value); }
 		}
 
+		public double DefaultHeight {
+			get { return (double)GetValue(DefaultHeightProperty); }
+			set { SetValue(DefaultHeightProperty, value); }
+		}
 
-		private static async void SlideOpenClose(BindableObject bindable, bool oldValue, bool newValue)
+
+		private static async void SlideOpenClose(BindableObject bindable, object oldValue, object newValue)
 		{
-			if (newValue) {
+			if ((bool)newValue) {
 				(bindable as SliderContentView).IsVisible = true;
 				await (bindable as SliderContentView).TranslateTo(0, 0, 250, Easing.SinInOut);
 				newValue = false;
@@ -44,20 +64,15 @@ namespace SliderDrawer
 			}
 		}
 
-		private static void StackLayoutAdded(BindableObject bindable, StackLayout oldValue, StackLayout newValue)
+		private static void StackLayoutAdded(BindableObject bindable, object oldValue, object newValue)
 		{
-			(bindable as SliderContentView).MyStack.Children.Add(newValue);
+			(bindable as SliderContentView).MyStack.Children.Add((StackLayout)newValue);
 		}
 
-		private static void DefaultHeightChanged(BindableObject bindable, double oldValue, double newValue)
+		private static void DefaultHeightChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			(bindable as SliderContentView).IsVisible = false;
-			(bindable as SliderContentView).TranslationY = newValue;
-		}
-
-		public double DefaultHeight {
-			get { return (double)GetValue(DefaultHeightProperty); }
-			set { SetValue(DefaultHeightProperty, value); }
+			(bindable as SliderContentView).TranslationY = (double)newValue;
 		}
 	}
 }
