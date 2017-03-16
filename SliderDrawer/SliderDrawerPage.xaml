@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SliderDrawer.SliderDrawerPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SliderDrawer">
+    <RelativeLayout>
+        <Button HorizontalOptions="CenterAndExpand"
+                VerticalOptions="FillAndExpand"
+                Command="{Binding ButtonCommand}"
+                Text="Click Me" />
+        <local:SliderContentView x:Name="sliderContent"
+                                 DefaultHeight="{Binding DefaultHeight}"
+                                 IsSlideOpen="{Binding IsSlideAddressOpen}"
+                                 IsVisible="false">
+            <local:SliderContentView.StackLayout>
+                <StackLayout Padding="20">
+                	<ListView ItemsSource="{Binding PersonList}">
+                		<ListView.ItemTemplate>
+                			<DataTemplate>
+                				<TextCell Text="{Binding Name}"/>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+                </StackLayout>
+            </local:SliderContentView.StackLayout>
+        </local:SliderContentView>
+    </RelativeLayout>
+</ContentPage>

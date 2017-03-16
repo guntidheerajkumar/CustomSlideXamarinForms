@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="SliderDrawer.SliderContentView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SliderDrawer">
+    <RelativeLayout>
+        <RelativeLayout WidthRequest="400"
+                        HeightRequest="{Binding DefaultHeight}"
+                        VerticalOptions="End"
+                        BackgroundColor="Black"
+                        Opacity="0.6"
+                        Padding="10" />
+        <StackLayout WidthRequest="{Binding DefaultWidth}"
+        			 x:Name="MyStack"
+                     HorizontalOptions="Start" 
+                     VerticalOptions="StartAndExpand"
+                     BackgroundColor="White"
+                     HeightRequest="300"
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,
+                                                                       Constant=0}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                       Property=Height,
+                                                                       Factor=0.5}">
+        </StackLayout>
+    </RelativeLayout>
+</ContentView>

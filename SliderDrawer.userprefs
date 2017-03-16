@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{7C10157A-2F9A-46CD-A4E0-EE5E6B0095BD}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SliderDrawer/MainPageModel.cs">
+    <Files>
+      <File FileName="SliderDrawer/SliderDrawerPage.xaml.cs" Line="22" Column="2" />
+      <File FileName="SliderDrawer/SliderContentView.xaml.cs" Line="59" Column="35" />
+      <File FileName="SliderDrawer/MainPageModel.cs" Line="8" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.SliderDrawer.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C46FE99E-05CC-4FAB-A6E7-38F2F4D3A288" />
+</Properties>
