@@ -19,7 +19,8 @@ namespace SliderDrawer.Droid
 			ToolbarResource = Resource.Layout.Toolbar;
 
 			base.OnCreate(bundle);
-
+			AppProperties.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
+			AppProperties.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density); 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
 			LoadApplication(new App());
