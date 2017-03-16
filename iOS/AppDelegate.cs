@@ -13,7 +13,8 @@ namespace SliderDrawer.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
-
+			AppProperties.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+			AppProperties.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
